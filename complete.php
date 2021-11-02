@@ -1,9 +1,9 @@
 <?php
 session_start();
-include 'functions.php';
+require_once './functions.php';
 
 $name = $_SESSION['name'];
-$hobby = $_SESSION['email'];
+$email = $_SESSION['email'];
 $gender = $_SESSION['gender'];
 $dbh = db_conn();
 try {
@@ -14,7 +14,6 @@ try {
 	$stmt->bindValue(':gender', $gender, PDO::PARAM_INT);
 	$stmt->execute();
 	$dbh = null;
-	unset($dbh);
 } catch (PDOException $e) {
 	echo ($e->getMessage());
 	die();
@@ -41,7 +40,7 @@ try {
 	</div>
 	<hr>
 	<p>名前は <?php echo $name; ?> さん</p>
-	<p>メールアドレスは <?php echo $hobby; ?> </p>
+	<p>メールアドレスは <?php echo $email; ?> </p>
 
 	<p>性別は <?php if ($gender === "1") {
 				echo '男性';

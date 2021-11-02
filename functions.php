@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors',1);
 function db_conn()
 {
 	define('DSN', 'mysql:host=localhost;dbname=lesson1;charset=utf8mb4');
